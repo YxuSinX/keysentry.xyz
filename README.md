@@ -33,7 +33,7 @@ Technical Requirements
 Getting Started
 ---------------
 
-1.  Clone the repository: `git clone https://github.com/your-repo/key-system-service.git`
+1.  Clone the repository: `git clone https://github.com/YxuSinX/keysentry.xyz.git`
 2.  Build the project: `mvn clean install`
 3.  Start the application: `java -jar target/key-system-service.jar`
 
@@ -42,7 +42,7 @@ Contributing
 
 We welcome contributions to the Key System Service Project. If you're interested in contributing, please follow these steps:
 
-1.  Fork the repository: `git fork https://github.com/your-repo/key-system-service.git`
+1.  Fork the repository: `git fork https://github.com/YxuSinX/keysentry.xyz.git`
 2.  Create a new branch: `git checkout -b your-branch`
 3.  Make changes and commit: `git commit -m "Your commit message"`
 4.  Open a pull request: `git push origin your-branch`
