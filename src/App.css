@@ -155,6 +155,9 @@
   width: 90%;
   max-width: 800px;
   margin: 20px;
+  opacity: 0;
+  animation: fadeInScale 0.8s ease-out 0.5s forwards,
+             glowPulse 3s infinite;
 }
 
 .maintenance-container h1 {
@@ -308,6 +311,15 @@
 
 .progress {
   position: absolute;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    rgba(103, 178, 255, 0.8),
+    rgba(255, 103, 231, 0.8),
+    rgba(103, 178, 255, 0.8)
+  );
+  background-size: 200% 100%;
+  animation: progressGlow 2s linear infinite;
+  box-shadow: 0 0 20px rgba(103, 178, 255, 0.5);
 }
 
 .countdown-container {
@@ -326,6 +338,8 @@
   position: relative;
   overflow: hidden;
   transition: transform 0.3s ease;
+  opacity: 0;
+  animation: fadeInScale 0.5s ease-out forwards;
 }
 
 .countdown-item:hover {
@@ -380,6 +394,8 @@
   top: clamp(10px, 3vw, 20px);
   left: clamp(10px, 3vw, 20px);
   z-index: 1000;
+  opacity: 0;
+  animation: slideInFromTop 1s ease-out forwards;
 }
 
 .logo {
@@ -466,6 +482,7 @@
   background-clip: text;
   color: transparent;
   font-weight: 900;
+  animation: titleGlow 3s infinite;
 }
 
 .title-accent::after {
@@ -824,23 +841,24 @@
   display: flex;
   gap: 30px;
   z-index: 1000;
+  opacity: 0;
+  animation: slideInFromBottom 0.8s ease-out 2s forwards;
 }
 
 .social-link {
   color: rgba(255, 255, 255, 0.8);
   font-size: 24px;
   transition: all 0.3s ease;
-  display: flex;
+  display: fixed;
   align-items: center;
   gap: 8px;
-  text-decoration: none;
   padding: 8px 16px;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
   position: relative;
-  overflow: hidden;
+  overflow: hidden; 
 }
 
 .social-link:hover {
@@ -852,8 +870,8 @@
 
 /* Discord styling */
 .social-link.discord:hover {
-  color: #C13584;
-  border-color: #C13584;
+  color: #7289da;
+  border-color: #7289da;
   box-shadow: 0 0 20px rgba(114, 137, 218, 0.5),
               inset 0 0 15px rgba(114, 137, 218, 0.3);
   text-shadow: 0 0 8px rgba(114, 137, 218, 0.5);
@@ -862,8 +880,8 @@
 
 /* Instagram styling */
 .social-link.instagram:hover {
-  color: #e1306c;
-  border-color: #e1306c;
+  color: #C13584;
+  border-color: #C13584;
   box-shadow: 0 0 20px rgba(225, 48, 108, 0.5),
               inset 0 0 15px rgba(225, 48, 108, 0.3);
   text-shadow: 0 0 8px rgba(225, 48, 108, 0.5);
@@ -889,5 +907,346 @@
   .social-link {
     font-size: 20px;
     padding: 6px 12px;
+  }
+}
+
+/* Add these new keyframe animations */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInFromTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 15px rgba(103, 178, 255, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 25px rgba(255, 103, 231, 0.8));
+  }
+}
+
+@keyframes progressGlow {
+  0% { background-position: 100% 0%; }
+  100% { background-position: -100% 0%; }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+@keyframes titleGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 15px rgba(103, 178, 255, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 25px rgba(255, 103, 231, 0.8));
+  }
+}
+
+/* Remove duplicate animations at the end of the file */
+
+/* Comprehensive responsive design */
+@media (max-width: 1200px) {
+  .maintenance-container {
+    width: 85%;
+    max-width: 900px;
+    padding: 2.5rem;
+  }
+
+  .countdown-container {
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .maintenance-container {
+    width: 90%;
+    padding: 2rem;
+  }
+
+  .main-title {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+  }
+
+  .countdown-value {
+    font-size: 2rem;
+  }
+
+  .logo {
+    width: clamp(80px, 12vw, 120px);
+  }
+}
+
+@media (max-width: 768px) {
+  .maintenance-container {
+    width: 92%;
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .maintenance-container h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .countdown-container {
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .countdown-item {
+    flex: 1 1 calc(50% - 0.6rem);
+    min-width: 120px;
+    padding: 0.8rem;
+  }
+
+  .countdown-value {
+    font-size: 1.8rem;
+  }
+
+  .countdown-label {
+    font-size: 0.8rem;
+  }
+
+  .release-notification {
+    padding: 1.2rem;
+    margin-top: 1.5rem;
+  }
+
+  .date-label {
+    font-size: 0.8rem;
+  }
+
+  .date {
+    font-size: 1rem;
+  }
+
+  .footer {
+    bottom: 15px;
+    gap: 20px;
+  }
+
+  .social-link {
+    padding: 6px 12px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .maintenance-container {
+    width: 95%;
+    padding: 1.2rem;
+    margin: 0.8rem;
+  }
+
+  .maintenance-container h1 {
+    font-size: 1.8rem;
+  }
+
+  .maintenance-container p {
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+  }
+
+  .countdown-container {
+    gap: 0.5rem;
+  }
+
+  .countdown-item {
+    padding: 0.6rem;
+  }
+
+  .countdown-value {
+    font-size: 1.5rem;
+  }
+
+  .countdown-label {
+    font-size: 0.7rem;
+  }
+
+  .logo {
+    width: clamp(60px, 10vw, 80px);
+  }
+
+  .footer {
+    bottom: 10px;
+    gap: 15px;
+  }
+
+  .social-link {
+    padding: 5px 10px;
+    font-size: 18px;
+  }
+}
+
+/* Handle very small devices */
+@media (max-width: 360px) {
+  .maintenance-container {
+    width: 98%;
+    padding: 1rem;
+    margin: 0.5rem;
+  }
+
+  .maintenance-container h1 {
+    font-size: 1.5rem;
+  }
+
+  .countdown-container {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .countdown-item {
+    flex: 1 1 100%;
+    min-width: unset;
+  }
+
+  .footer {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+/* Handle landscape orientation */
+@media (max-height: 600px) and (orientation: landscape) {
+  .App {
+    min-height: 100%;
+    padding: 2rem 0;
+  }
+
+  .maintenance-container {
+    margin: 1rem auto;
+  }
+
+  .logo-container {
+    position: absolute;
+    top: 10px;
+  }
+
+  .title-container {
+    position: relative;
+    margin: 1rem auto;
+  }
+
+  .footer {
+    position: relative;
+    margin-top: 1rem;
+  }
+}
+
+/* Handle high-resolution displays */
+@media (min-width: 1920px) {
+  .maintenance-container {
+    max-width: 1200px;
+    padding: 3rem;
+  }
+
+  .main-title {
+    font-size: 4rem;
+  }
+
+  .maintenance-container h1 {
+    font-size: 3.2rem;
+  }
+
+  .countdown-value {
+    font-size: 3rem;
+  }
+
+  .countdown-label {
+    font-size: 1.1rem;
+  }
+
+  .logo {
+    width: clamp(120px, 15vw, 180px);
+  }
+}
+
+/* Handle ultra-wide screens */
+@media (min-width: 2560px) {
+  .maintenance-container {
+    max-width: 1400px;
+  }
+
+  .main-title {
+    font-size: 5rem;
+  }
+
+  .maintenance-container h1 {
+    font-size: 3.8rem;
+  }
+}
+
+/* Handle device pixel ratio */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .maintenance-container {
+    box-shadow: 
+      0 4px 6px rgba(0, 0, 0, 0.07),
+      0 1px 3px rgba(0, 0, 0, 0.06),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  }
+
+  .countdown-item {
+    border-width: 0.5px;
+  }
+}
+
+/* Improve touch targets on mobile */
+@media (hover: none) and (pointer: coarse) {
+  .social-link {
+    padding: 10px 15px;
+    margin: 0 5px;
+  }
+
+  .countdown-item {
+    padding: 12px;
+  }
+}
+
+/* Reduce animations on devices that prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .orb-1, .orb-2, .orb-3, .orb-4, .orb-5, .orb-6, .orb-7, .orb-8 {
+    display: none;
   }
 }
