@@ -113,7 +113,7 @@ function App() {
           <div className="release-notification">
             <div className="release-date">
               <span className="date-label">Release Date</span>
-              <span className="date">November 15, 2024</span>
+              <span className="date">November 17, 2024</span>
             </div>
             <div className="countdown-container">
               <div className="countdown-item">
@@ -137,7 +137,7 @@ function App() {
               <div 
                 className="progress" 
                 style={{ 
-                  width: `${((new Date() - new Date('2024-01-01')) / (new Date('2024-11-15') - new Date('2024-01-01'))) * 100}%` 
+                  width: `${((new Date() - new Date('2024-01-01')) / (new Date('2024-11-17') - new Date('2024-01-01'))) * 100}%` 
                 }}
               ></div>
             </div>
